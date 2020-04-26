@@ -24,6 +24,7 @@ header{
         font-size: 50px;
     }
     nav{
+       width:100%;
         height:auto;
         grid-column-start: 1;
         grid-column-end: -1;
@@ -56,6 +57,8 @@ header{
         letter-spacing: 1px;
         
         text-align: center;
+        width:100%;
+        overflow: auto;
     }
     footer{
         grid-column-start: 1;
@@ -76,7 +79,7 @@ header{
    main #table{
 
     display: none;
-    padding: 5px 5px;
+    
    }
    main #table table{
     border-top: 1px solid #AB6CC2;
@@ -98,6 +101,8 @@ header{
    main #table table th{
     background-color: #AB6CC2;
     color: white;
+   
+    
    }
    main #table table tr:nth-of-type(even){
     background-color: #EFEAEA;
