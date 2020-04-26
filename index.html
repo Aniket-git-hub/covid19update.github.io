@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
     <title>Covid19 Update</title>
  	<link rel="stylesheet" type="text/css" href="css.css">
+	<link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet'>
 </head>
 <body>
     <!-- ------------------this is header section-------------------->
@@ -15,21 +15,21 @@
     </header>
     <!-- ------------------this is navigation section----------------->
     <nav>
-            <a href=""><button>Global</button></a>
-            <a href=""><button>Countries</button></a>
-            <button onclick="document.getElementById('table-india').style.display = 'block' ">India</button>
+            <button onclick="getGlobal()">Global</button>
+            <button onclick="getWorld()">Countries</button>
+            <button onclick="getIndia()">India</button>
             
 
     </nav>
     <!-- ------------------this is main section of content----------------->
     <main>
-          <div id="table-india"></div>
-          <div id="table-Global"></div>
+          <div id="table"></div>
     </main>
     <!-- ------------------this is the footer section----------------->
     <footer>
-       
+       <p>Stay Home, Stay Safe<p>
     </footer>
     <script type="text/javascript" charset="utf-8" src="javascript.js" async defer></script>
+
 </body>
 </html>
