@@ -10,26 +10,39 @@
 <body>
     <!-- ------------------this is header section-------------------->
     <header>
-        <h1>Covid 19</h1>
+        <h1>Corona Update</h1>
         <p>stay home, stay safe</p>
     </header>
     <!-- ------------------this is navigation section----------------->
     <nav>
-            <button onclick="getGlobal()">Global</button>
-            <button onclick="getWorld()">Countries</button>
-            <button onclick="getIndia()">India</button>
+           
+            <button onclick="togle()">India</button>
             
 
     </nav>
     <!-- ------------------this is main section of content----------------->
     <main>
+    	  <div class="across-box">
+    	  	<h3>Across India</h3>
+    	  	<table>
+    	  		<tr><th>Confirmed</th><th>Recovered</th><th>Deceased</th></tr>
+    	  		<tr><td id="conf">1</td><td id="rec">2</td><td id="dea">3</td></tr>
+    	  	</table>
+    	  </div>
           <div id="table"></div>
+          <div class="across-box">
+    	  	<h3>Across the Globe</h3>
+    	  	<table>
+    	  		<tr><th>Confirmed</th><th>Recovered</th><th>Deceased</th></tr>
+    	  		<tr><td id="Gconf">1</td><td id="Grec">2</td><td id="Gdea">3</td></tr>
+    	  	</table>
+    	  </div>
     </main>
     <!-- ------------------this is the footer section----------------->
     <footer>
-       <p>Stay Home, Stay Safe<p>
+       <p>Stay Home, Stay Safe</p>
+       	<p>Call Helpline number </p><p>&nbsp;1075</p>
     </footer>
     <script type="text/javascript" charset="utf-8" src="javascript.js" async defer></script>
-
 </body>
 </html>
