@@ -19,104 +19,160 @@ header{
     background-image: linear-gradient(to left, blue ,aqua);
     color:azure;
           }
-    header h1 {
-        padding-top: 30px;
-        font-size: 50px;
-    }
-    nav{
-       width:100%;
-        height:auto;
-        grid-column-start: 1;
-        grid-column-end: -1;
-        margin-bottom:20px;
-        text-align: center;
-        background-color: aquamarine;
-        padding:5px;
-        position: sticky;
-        top:0;
-    }
-    nav  button{
-        padding:10px 10px;
-        margin-left: 10px;
-        text-align: center;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 20px;
-        background-image: linear-gradient(to right, lightblue ,aqua);
-        color:black;
-        border:none;
-        outline: none;
-        border-radius: 5px;
-       
-    }
-    main{
-        grid-column-start: 1;
-        grid-column-end:-1;
-        padding:20px 20px;
-        font-size: 20px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        letter-spacing: 1px;
-        
-        text-align: center;
-        width:100%;
-        overflow: auto;
-    }
-    footer{
-        grid-column-start: 1;
-        grid-column-end:-1;
-        background-color: darkcyan;
-        color:white;
-        padding:20px 20px;
-        font-size: 20px;
-        text-align: center;
-    }
-    @media screen and (max-width:600px){
-      nav a button{
-        padding:5px;
-        margin-left: 5px;
-      }
-    }
+header h1 {
+    padding-top: 30px;
+    font-size: 50px;
+}
+nav{
+    height:auto;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    margin-bottom:20px;
+    text-align: center;
+    background-color: aquamarine;
+    padding:5px;
+    position: sticky;
+    top:0;
+}
+nav  button{
+    padding:10px 10px;
+    margin-left: 10px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-image: linear-gradient(to right, lightblue ,aqua);
+    color:black;
+    border:none;
+    outline: none;
+    border-radius: 5px;
+   
+}
+main{
+    grid-column-start: 1;
+    grid-column-end:-1;
+    padding:20px 20px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 1px;
     
-   main #table{
+    text-align: center;
+}
+footer{
+    grid-column-start: 1;
+    grid-column-end:-1;
+    background-color: darkcyan;
+    color:white;
+    padding:20px 20px;
+    font-size: 20px;
+    text-align: center;
+}
+@media screen and (max-width:600px){
+  nav a button{
+    padding:5px;
+    margin-left: 5px;
+  }
+}
 
-    display: none;
-    
-   }
-   main #table table{
+main #table{
+    padding: 15px 5px 5px 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 3px 3px lightgray;
+}
+main #table table{
+    display: inline-block;
     border-top: 1px solid #AB6CC2;
+    border-radius: 5px;
     border-collapse: collapse;
-    border-radius: 5px 0;
     text-align: left;
     padding:2px 2px;
     border-bottom: 5px solid #AB6CC2; 
     border-left:1px solid #AB6CC2;
-    border-right:1px solid #AB6CC2 ;
-   }
-   main #table table th,
-   main #table table td{
+    border-right:1px solid #AB6CC2;
+}
+main #table table th,
+main #table table td{
     border-bottom: 1px solid black;
     font-family: Muli;
     letter-spacing: 1px;
-    padding: 2px 2px;
-   }
-   main #table table th{
+    padding: 10px;
+  
+    
+}
+main #table table caption{
+    font-family: Muli;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+main #table table th{
     background-color: #AB6CC2;
     color: white;
-   
-    
-   }
-   main #table table tr:nth-of-type(even){
+}
+main #table table tr:nth-of-type(even){
     background-color: #EFEAEA;
-   }
-   main #table p{
+}
+main #table p{
     font-family: Muli;
     font-weight: normal;
     letter-spacing: 1px;
     margin-bottom: 10px;
-   }
-    footer p{
-        display: inline-block;
+}
+footer p{
+    display: inline-block;
     font-family: Muli;
     font-weight: normal;
     letter-spacing: 1px;
     margin-bottom: 10px;
+}
+/* for the serach filter */
+main #search{
+    width: 50%;
+    padding: 5px;
+    padding-left:10px ;
+    padding-right:10px; 
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    font-family: Muli;
+    letter-spacing: 1px;
+    background: transparent;
+    margin-bottom: 10px;
+
+}
+main #search:focus{
+    border-color: dodgerblue;
+    border-width: 3px;
+}
+@media screen and (max-width:600px) {
+   main #table table{
+    font-size: 15px;
    }
+}
+ /* Designing the across box */
+ main .across-box{
+    border-radius: 5px;
+    padding: 5px;
+    text-align: left;
+    box-shadow: 0 0 3px 3px lightgray;
+    margin-bottom: 15px;
+    width: fit-content;
+ }
+ main .across-box h3{
+    margin-left: 10px;
+    font-family: Muli;
+    font-weight: bolder;
+    letter-spacing: 1px;
+ }
+ main .across-box table {
+    border-collapse: collapse;
+ }
+
+ main .across-box table td,
+ main .across-box table th{
+    font-family: Muli;
+    letter-spacing: 1px;
+    padding: 10px;
+ }
