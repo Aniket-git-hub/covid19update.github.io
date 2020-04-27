@@ -80,8 +80,7 @@ main #table{
     border-radius: 5px;
     text-align: center;
     box-shadow: 0 0 3px 3px lightgray;
-    width:100%;
-    overflow:auto;
+    width:fit-content;
 }
 main #table table{
     display: inline-block;
@@ -117,12 +116,7 @@ main #table table th{
 main #table table tr:nth-of-type(even){
     background-color: #EFEAEA;
 }
-main #table p{
-    font-family: Muli;
-    font-weight: normal;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-}
+
 footer p{
     display: inline-block;
     font-family: Muli;
@@ -152,6 +146,7 @@ main #search:focus{
 @media screen and (max-width:600px) {
    main #table table{
     font-size: 15px;
+    padding:5px;
    }
    main .across-box{
      font-size: 15px;
