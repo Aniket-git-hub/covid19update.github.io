@@ -24,7 +24,7 @@ header h1 {
     padding-top: 30px;
     font-size: 50px;
     font-family: Muli;
-    font-weight: bolder;
+    font-weight: bold;
 }
 header p{
     font-family: Muli;
@@ -172,7 +172,7 @@ main #search:focus{
     height: 400px;
  }
  /* [main media query for mobile] */
- @media screen and (max-width:500px) {
+ @media screen and (max-width:600px) {
    main #table{
     margin: 10px 2px 10px 2px;
    }
