@@ -81,7 +81,8 @@ main #table{
     border-radius: 5px;
     text-align: center;
     box-shadow: 0 0 3px 3px lightgray;
-    width: fit-content;
+    width: 100%;
+    overflow:auto;
 }
 main #table table{
     display: inline-block;
