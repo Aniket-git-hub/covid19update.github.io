@@ -153,7 +153,6 @@ main #search:focus{
  main .across-box h3{
     margin-left: 10px;
     font-family: Muli;
-    font-weight: bolder;
     letter-spacing: 1px;
  }
  main .across-box table {
@@ -165,7 +164,7 @@ main #search:focus{
  main .across-box div{
     font-family: Muli;
     letter-spacing: 1px;
-    padding: 10px;
+    padding: 5px;
  }
  main .across-box div img{
     width:100%;
