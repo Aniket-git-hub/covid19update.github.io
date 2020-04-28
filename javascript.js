@@ -6,8 +6,8 @@ const table = document.getElementById("table");
 	const td2 = document.getElementById("rec");
 	const td3 = document.getElementById("dea");
 	// [for indian states ]
-	window.addEventListener("load", async()=>{
-		 await fetch(url).then(res=>{
+	window.addEventListener("load",()=>{
+		 fetch(url).then(res=>{
 			return res.json();
 		}).then(data=>{
 			let obj = data.statewise;
