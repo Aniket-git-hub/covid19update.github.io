@@ -5,13 +5,12 @@ const table = document.getElementById("table");
 	const td1 = document.getElementById("conf");
 	const td2 = document.getElementById("rec");
 	const td3 = document.getElementById("dea");
-	// for indian states 
-	window.addEventListener("load", ()=>{
-		fetch(url).then(res=>{
+	// [for indian states ]
+	window.addEventListener("load", async()=>{
+		 await fetch(url).then(res=>{
 			return res.json();
 		}).then(data=>{
 			let obj = data.statewise;
-			console.log(obj);
 			td1.innerText = obj[0].confirmed;
 			td2.innerText = obj[0].recovered;
 			td3.innerText = obj[0].deaths;
@@ -30,7 +29,7 @@ const table = document.getElementById("table");
 		});
 	});
   
-
+// [togle function]
   function togle(){
   		if (table.style.display == "none") {
   			table.style.display = "block";
@@ -38,7 +37,7 @@ const table = document.getElementById("table");
   			table.style.display = "none";
   		}
   }
-
+// [search function]
   function search(){
   	let input, filter, table, tr, td, i, txtValue;
 
@@ -60,27 +59,7 @@ const table = document.getElementById("table");
   	   }
    }
 }
-	// we are gonna need it later
-//  // for world
-//  function getWorld(){
-//  	fetch(url_2).then(res=>{
-//  		return res.json();
-//  	}).then(data=>{
-//  		let obj = data.Countries;
-//  		let i, text;
-//  		text="<table>";
-// 	    text+="<tr><th>Country</th><th>Total Confirmed</th><th>Total Recovered</th><th>Total Deaths</th></tr>";
-// 	    for(i = 1; i<obj.length; i++){
-// 	    	text+="<tr><td>"+obj[i].Country+"</td><td>"+obj[i].TotalConfirmed+"</td><td>"+obj[i].TotalRecovered+"</td><td>"+obj[i].TotalDeaths+"</td></tr>";
-// 	    }
-// 	    text+="</table>";
-	    
-// 	    document.getElementById("table").innerHTML = text;
-//  	}).catch(error=>{
-//  		console.log(error);
-//  	});
-//  } 
-// Global data stats
+// [data for world]
 	window.addEventListener("load", ()=>{
 	const td1 = document.getElementById("Gconf");
 	const td2 = document.getElementById("Grec");
@@ -96,3 +75,18 @@ const table = document.getElementById("table");
  		console.log(error);
  	});
 });
+// [modal fucntion]
+let modal = document.getElementById("modal");
+document.getElementById("modal-envok").addEventListener("click", ()=>{
+
+	modal.style.display = "block";
+
+});
+document.getElementById("close").addEventListener("click" , ()=>{
+	modal.style.display = "none";
+});
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
