@@ -24,7 +24,7 @@ header h1 {
     padding-top: 30px;
     font-size: 50px;
     font-family: Muli;
-    font-weight: bold;
+    font-weight: bolder;
 }
 header p{
     font-family: Muli;
@@ -55,11 +55,19 @@ nav  button{
     border-radius: 5px;
    
 }
+nav button a{
+    text-decoration: none;
+    color: black;
+}
 /* [nav media query] */
 @media screen and (max-width:500px){
-  nav a button{
+  nav button{
     padding:5px;
     margin-left: 5px;
+  }
+  nav button a {
+   padding:5px;
+   margin-left: 5px; 
   }
 }
 
@@ -71,20 +79,21 @@ main{
     font-size: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     letter-spacing: 1px;
-    width:100%;
+    overflow: auto;
     text-align: center;
 }
 /* [main table] */
-main #table{
+main #table,#table-global{
     padding: 15px 5px 5px 5px;
     margin-bottom: 20px;
     border-radius: 5px;
     text-align: center;
     box-shadow: 0 0 3px 3px lightgray;
-    width: 100%;
-    overflow:auto;
+    width: fit-content;
+    overflow: auto;
 }
-main #table table{
+main #table table
+,main #table-global table{
     display: inline-block;
     border-top: 1px solid #AB6CC2;
     border-radius: 5px;
@@ -96,31 +105,33 @@ main #table table{
     border-right:1px solid #AB6CC2;
 }
 main #table table th,
-main #table table td{
+main #table table td, 
+main #table-global table th,
+main #table-global table td{
     border-bottom: 1px solid black;
     font-family: Muli;
     letter-spacing: 1px;
     padding: 10px;
 }
-main #table table caption{
+main #table table caption,
+main #table-global table caption{
     font-family: Muli;
     font-weight: bold;
     letter-spacing: 1px;
     margin-bottom: 10px;
 }
-main #table table th{
+main #table table th, 
+main #table-global table th{
     background-color: #AB6CC2;
     color: white;
 }
 main #table table tr:nth-of-type(even){
     background-color: #EFEAEA;
 }
-main #table p{
-    font-family: Muli;
-    font-weight: normal;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
+main #table-global table tr:nth-of-type(even){
+    background-color: #EFEAEA;   
 }
+
 /* [main search] */
 main #search{
     width: 50%;
@@ -153,7 +164,12 @@ main #search:focus{
  main .across-box h3{
     margin-left: 10px;
     font-family: Muli;
+    font-weight: bolder;
     letter-spacing: 1px;
+ }
+ main .across-box h3 a{
+    text-decoration: none;
+    color: black;
  }
  main .across-box table {
     border-collapse: collapse;
@@ -164,22 +180,25 @@ main #search:focus{
  main .across-box div{
     font-family: Muli;
     letter-spacing: 1px;
-    padding: 5px;
+    padding: 10px;
  }
  main .across-box div img{
     width:100%;
     height: 400px;
  }
  /* [main media query for mobile] */
- @media screen and (max-width:600px) {
-   main #table{
+ @media screen and (max-width:500px) {
+   main #table, #table-gobal{
     margin: 10px 2px 10px 2px;
    }
-   main #table table{
+   main #table table, 
+   main #table-global table{
     font-size: 15px;
    }
    main #table table td,
-   main #table table th{
+   main #table table th,
+   main #table-global table td,
+   main #table-global table th{
     padding: 2px;
    }
    main {
