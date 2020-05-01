@@ -1,15 +1,17 @@
 const url = "https://api.covid19india.org/data.json";
 const url_2 = "https://api.covid19api.com/summary";
-const table = document.getElementById("table"); 		
+		
 	// for india
-	const td1 = document.getElementById("conf");
-	const td2 = document.getElementById("rec");
-	const td3 = document.getElementById("dea");
-	// [for indian states ]
-	window.addEventListener("load",()=>{
-		 fetch(url).then(res=>{
+	
+	// // [for indian states ]
+	window.addEventListener("load", ()=>{
+		     fetch(url).then(res=>{
 			return res.json();
 		}).then(data=>{
+			const table = document.getElementById("table"); 
+			const td1 = document.getElementById("conf");
+			const td2 = document.getElementById("rec");
+			const td3 = document.getElementById("dea");
 			let obj = data.statewise;
 			td1.innerText = obj[0].confirmed;
 			td2.innerText = obj[0].recovered;
@@ -61,20 +63,33 @@ const table = document.getElementById("table");
 }
 // [data for world]
 	window.addEventListener("load", ()=>{
-	const td1 = document.getElementById("Gconf");
-	const td2 = document.getElementById("Grec");
-	const td3 = document.getElementById("Gdea");
 	fetch(url_2).then(res=>{
  		return res.json();
  	}).then(data=>{
- 		let obj = data.Global;
- 		td1.innerText = obj.TotalConfirmed;
- 		td2.innerText = obj.TotalRecovered;
- 		td3.innerText = obj.TotalDeaths;
+		let global_stat= data.Global;
+		let country_stat = data.Countries;
+ 		const td1 = document.getElementById("Gconf");
+		const td2 = document.getElementById("Grec");
+		const td3 = document.getElementById("Gdea");
+		const table = document.getElementById("table-global");
+ 		td1.innerText = global_stat.TotalConfirmed;
+ 		td2.innerText = global_stat.TotalRecovered;
+ 		td3.innerText = global_stat.TotalDeaths;
+ 		let i , text;
+		text= "<input type='text' id='search' onkeyup='search()' title='Search Your State' placeholder='Search States/UTs'>"
+		text+="<table id='tab'>";
+		text+="<caption>Countries and their stats</caption>";
+		text+="<tr><th>Location</th><th>Confirmed</th><th>Deceased</th><th>Recovered</th></tr>";
+		for (i = 1; i < country_stat.length; i++) {
+			text+="<tr><td>"+country_stat[i].Country+"</td><td>"+country_stat[i].TotalConfirmed+"</td><td>"+country_stat[i].TotalDeaths+"</td><td>"+country_stat[i].TotalRecovered+"</td></tr>";
+		}
+		text+="</table>";
+		table.innerHTML = text;
  	}).catch(error=>{
  		console.log(error);
  	});
 });
+
 // [modal fucntion]
 let modal = document.getElementById("modal");
 document.getElementById("modal-envok").addEventListener("click", ()=>{
