@@ -7,11 +7,11 @@
     <link rel="icon" href="for corona upadate title.JPG" type="image/icon type">
  	<link rel="stylesheet" type="text/css" href="css.css">
 	<link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet'>
-	 <script data-ad-client="pub-7428083853927411" async src="https://pagead2.googlesyndication.com/
-pagead/js/adsbygoogle.js"></script>
 </head>
-<body>
-
+<body onload="document.getElementById('loader').style.display = 'none' ">
+	<div class="loader" id="loader">
+		<div class="loading"></div>
+	</div>
     <!-- ------------------this is header section-------------------->
     <header>
         <h1>Corona Update</h1>
@@ -19,11 +19,8 @@ pagead/js/adsbygoogle.js"></script>
     </header>
     <!-- ------------------this is navigation section----------------->
     <nav>
-           
-            <button onclick="togle()">India</button>
+            <button>India</button>
             <button><a href="covid-world.html">World</a></button>
-            
-
     </nav>
     <!-- ------------------this is main section of content----------------->
     <main>
@@ -38,7 +35,7 @@ pagead/js/adsbygoogle.js"></script>
     	  	<h3><a href="covid-world.html">Across the Globe</a></h3>
     	  	<table>
     	  		<tr><th>Confirmed</th><th>Recovered</th><th>Deceased</th></tr>
-    	  		<tr><td id="Gconf">-</td><td id="Grec">-</td><td id="Gdea">-</td></tr>
+    	  		<tr><td id="Gconf"><div></div></td><td id="Grec"><div></div></td><td id="Gdea"><div></div></td></tr>
     	  	</table>
     	  </div>
           <div id="table"></div>
