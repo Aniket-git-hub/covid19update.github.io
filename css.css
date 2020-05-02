@@ -114,8 +114,9 @@ text-align: center;
 box-shadow: 0 0 3px 3px lightgray;
 width:fit-content;
 }
-main #table table
-,main #table-global table{
+main #table table,
+main #table-global table,
+main #modal_district table{
 display: inline-block;
 border-top: 1px solid #AB6CC2;
 border-radius: 5px;
@@ -129,26 +130,33 @@ border-right:1px solid #AB6CC2;
 main #table table th,
 main #table table td,
 main #table-global table th,
-main #table-global table td{
+main #table-global table td,
+main #modal_district table th,
+main #modal_district table td{
 border-bottom: 1px solid black;
 font-family: Muli;
 letter-spacing: 1px;
 padding: 10px;
 }
 main #table table caption,
-main #table-global table caption{
+main #table-global table caption,
+mian #modal_district table caption{
 font-family: Muli;
 font-weight: bold;
 letter-spacing: 1px;
 margin-bottom: 10px;
 }
 main #table table th,
-main #table-global table th{
+main #table-global table th,
+main #modal_district table th{
 background-color: #AB6CC2;
 color: white;
 }
 main #table table tr:nth-of-type(even){
 background-color: #EFEAEA;
+}
+main #modal_district table tr:nth-of-type(even){
+ background-color: #EFEAEA;   
 }
 main #table-global table tr:nth-of-type(even){
 background-color: #EFEAEA;
@@ -228,14 +236,22 @@ width:100%;
 margin: 10px 2px 10px 2px;
 overflow: auto;
 }
+main #modal_district{
+    padding:30px 30px 30px 30px;
+    width: 100%;
+}
 main #table table,
-main #table-global table{
+main #table-global table,
+main #modal_district table{
 font-size: 15px;
+overflow: auto;
 }
 main #table table td,
 main #table table th,
 main #table-global table td,
-main #table-global table th{
+main #table-global table th, 
+main #modal_district table td,
+main #modal_district table th{
 padding: 2px;
 }
 main .across-box div img{
@@ -277,17 +293,35 @@ border: 1px solid black;
 padding: 20px;
 overflow: auto;
 }
-main .modal .modal-content .close{
-color: #aaa;
+.close{
+color: red;
 float: right;
-font-size: 28px;
+font-size: 30px;
 font-weight: bolder;
 }
-main .modal .modal-content .close:focus,
-main .modal .modal-content .close:hover{
-color: red;
+.close:focus{
+font-size: 35px;
+color: darkred;
 text-decoration: none;
 cursor: pointer;
+}
+.close:hover{
+    font-size: 35px;
+color: darkred;
+text-decoration: none;
+cursor: pointer;
+}
+main #modal_district{
+display: none;
+position: fixed;
+z-index: 1;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgba(255, 255, 255, 1.0);
+padding:30px 10px 20px 10px;
 }
 /* [main animations] */
 @-webkit-keyframes turn {
