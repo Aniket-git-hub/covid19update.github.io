@@ -36,7 +36,7 @@ const url_2 = "https://api.covid19api.com/summary";
 				let text_data;
                                 text_data="<span class='close' id='close_district'>&times;</span>";
 				text_data+= "<input type='text' id='search' onkeyup='search()' title='Search Your Districts' placeholder='Search Districts'>"; 
-				text_data+= "<table>";
+				text_data+= "<table id='tab'>";
 					text_data+="<caption>Distric Stats</caption>";
 					text_data+="<tr><th>Location</th><th>Total Confirmed</th><th>Active</th><th>Deaths</th><th>Recovered</th></tr>"; 
 				for ( let distric in object) {
@@ -93,5 +93,6 @@ const modal_district = document.getElementById("modal_district");
 const modal=document.getElementById("modal");
 document.getElementById("modal-envok").addEventListener("click", ()=> modal.style.display = "block");
 document.getElementById("close").addEventListener("click" , ()=>modal.style.display = "none");
+document.getElementById("close_district").addEventListener("click",()=>modal_district.style.display = "none");
 window.onclick=(event)=>(event.target==modal)&&(modal.style.display="none");
 window.onclick=(event)=>(event.target==modal_district)&&(modal_district.style.display="none");
