@@ -26,7 +26,7 @@ const url_2 = "https://api.covid19api.com/summary";
 		})
 	);
 // [function to display distric data]
-		function redirect(element){
+		const redirect=(element)=>{
 			const table = document.getElementById("modal_district");
 				table.style.display = 'block';
 			const url_for_distric = "https://api.covid19india.org/state_district_wise.json";
@@ -34,9 +34,10 @@ const url_2 = "https://api.covid19api.com/summary";
 			fetch(url_for_distric).then(response=> response.json()).then(raw_data=>{
 				let object = raw_data[state].districtData;
 				let text_data;
-				text= "<input type='text' id='search' onkeyup='search()' title='Search Your Districts' placeholder='Search Districts'>" 
-				text_data= "<table>";
-					text_data+="<caption>Distric Stats</caption>"
+                                text_data="<span class="close" id="close_district">&times;</span>";
+				text_data+= "<input type='text' id='search' onkeyup='search()' title='Search Your Districts' placeholder='Search Districts'>"; 
+				text_data+= "<table>";
+					text_data+="<caption>Distric Stats</caption>";
 					text_data+="<tr><th>Location</th><th>Total Confirmed</th><th>Active</th><th>Deaths</th><th>Recovered</th></tr>"; 
 				for ( let distric in object) {
 				text_data +="<tr><td>"+distric+"</td><td>"+object[distric].confirmed+"</td><td>"+object[distric].active+"</td><td>"+object[distric].deceased+"</td><td>"+object[distric].recovered+"</td></tr>";
