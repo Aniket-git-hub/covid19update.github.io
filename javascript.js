@@ -82,7 +82,7 @@ const url_world_data = "https://api.covid19api.com/summary";
 const modal_districts = document.getElementById("modal_district");
 const modal=document.getElementById("modal");
 document.getElementById("modal-envok").addEventListener("click", ()=> modal.style.display = "block");
-document.getElementById("close").addEventListener("click" , ()=>modal.style.display = "none");
+
 window.onclick=(event)=>(event.target==modal)&&(modal.style.display="none");
 window.onclick=(event)=>(event.target==modal_district)&&(modal_districts.style.display="none");
 
