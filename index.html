@@ -26,7 +26,7 @@
     <main>
         <div class="across-box">
           <h3>Across India</h3>
-          <table>
+          <table id="table_across_india">
             <tr><th>Confirmed</th><th>Recovered</th><th>Deceased</th></tr>
             <tr><td id="conf">-</td><td id="rec">-</td><td id="dea">-</td></tr>
           </table>
@@ -34,17 +34,15 @@
         <!-- this shows the data summry of world -->
         <div class="across-box">
           <h3><a href="covid-world.html">Across the Globe</a></h3>
-          <table>
+          <table id="table_across_global">
             <tr><th>Confirmed</th><th>Recovered</th><th>Deceased</th></tr>
-            <tr><td id="Gconf"><div></div></td><td id="Grec"><div></div></td><td id="Gdea"><div></div></td></tr>
+            <tr><td id="Gconf"></td><td id="Grec"></td><td id="Gdea"></td></tr>
           </table>
         </div>
         <!-- this shows the states data in detail -->  
-          <div id="table"></div>
+          <div id="table_indian_states"></div>
           <!-- this shows the disrtic data of respective states -->
-          <div id="modal_district">
-            <span class="close" id="close_district">&times;</span>
-          </div>
+          <div id="modal_district"></div>
           <div class="across-box" id="modal-envok">
             <h3>Things to do next</h3>
             <div>Stay Home</div>
