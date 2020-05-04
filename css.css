@@ -140,8 +140,7 @@ letter-spacing: 1px;
 padding: 10px;
 }
 main #table_indian_states table caption,
-main #table-global table caption,
-mian #modal_district table caption{
+main #table-global table caption{
 font-family: Muli;
 font-weight: bold;
 letter-spacing: 1px;
