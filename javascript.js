@@ -28,10 +28,9 @@ const url_world_data = "https://api.covid19api.com/summary";
 			const state = element.getElementsByTagName("td")[0].innerHTML;
 			fetch(url_for_distric).then(response=> response.json()).then(raw_data=>{
 				let object = raw_data[state].districtData, text_data;
-		                text_data=`<span class='close' id='close_district'>&times;</span>`;
-						text_data+= `<input type="text" class="search_box" id="search" onkeyup="search(this.id, document.getElementById('table_district'))" title="Search Your Districts" placeholder="Search Districts">`; 
+						text_data= `<input type="text" class="search_box" id="search" onkeyup="search(this.id, document.getElementById('table_district'))" title="Search Your Districts" placeholder="Search Districts">`; 
 						text_data+= `<table id='table_district'>`;
-						text_data+=`<caption>Distric Stats</caption>`;
+						text_data+=`<caption>District Stats</caption>`;
 						text_data+=`<tr><th>Location</th><th>Total Confirmed</th><th>Active</th><th>Deaths</th><th>Recovered</th></tr>`; 
 					for ( let distric in object){
 					text_data +=`<tr><td>${distric}</td><td>${object[distric].confirmed}</td><td>${object[distric].active}</td><td>${object[distric].deceased}</td><td>${object[distric].recovered}</td></tr>`;
@@ -40,7 +39,7 @@ const url_world_data = "https://api.covid19api.com/summary";
 					(table) && (table.innerHTML = text_data)
 			}).catch(err=>console.log(err))}
 // ********************************[data for world]*************************************************
-	window.addEventListener("load",()=>fetch(url_world_data).then(res=> res.json()).then(data=>{
+	window.addEventListener("load",()=>fetch(url_world_data).then(res=>res.json()).then(data=>{
 		let global_stat= data.Global, country_stat = data.Countries, i, text;
  		const td1 = document.getElementById("Gconf");
 		const td2 = document.getElementById("Grec");
@@ -68,13 +67,13 @@ const url_world_data = "https://api.covid19api.com/summary";
 	  tr = table.getElementsByTagName("tr");
 		  for (i = 0; i < tr.length; i++) {
 		    td = tr[i].getElementsByTagName("td")[0];
-		    if (td) {
+		    if(td){
 		      txtValue = td.textContent || td.innerText;
 		      if (txtValue.toUpperCase().indexOf(filter) > -1){
 		        tr[i].style.display = "";
-		      }else{
+		    }else{
 		        	tr[i].style.display = "none";
-    	   	}
+    	   	     }
   	   }
    }
 }
@@ -82,7 +81,11 @@ const url_world_data = "https://api.covid19api.com/summary";
 const modal_districts = document.getElementById("modal_district");
 const modal=document.getElementById("modal");
 document.getElementById("modal-envok").addEventListener("click", ()=> modal.style.display = "block");
-
-window.onclick=(event)=>(event.target==modal)&&(modal.style.display="none");
-window.onclick=(event)=>(event.target==modal_district)&&(modal_districts.style.display="none");
-
+document.getElementById("close").addEventListener("click" , ()=>modal.style.display = "none");
+window.addEventListener("click", (event)=>{
+	if(event.target == modal){
+		modal.style.display = 'none';
+	}else if (event.target == modal_districts) {
+		modal_districts.style.display = 'none';
+	}
+})
