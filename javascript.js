@@ -4,9 +4,7 @@ const url_world_data = "https://api.covid19api.com/summary";
 	window.addEventListener("load",()=>fetch(url_india).then(res=>res.json()).then(data=>{
 			let obj = data.statewise, i , text;
 			const table = document.getElementById("table_indian_states"),
-			 delta_total = document.getElementById("delta_total"),
-				   delta_Deaths = document.getElementById("delta_Deaths"),
-				   delta_recovered = document.getElementById("delta_recovered"),
+			 
 				  across_table = document.getElementById("table_across_india"),
 	     		  across_tr = across_table.getElementsByTagName("tr"),
 		 		  across_td = across_tr[1].getElementsByTagName("td"),
@@ -16,9 +14,7 @@ const url_world_data = "https://api.covid19api.com/summary";
 				  across_td[0].innerHTML = obj[0].confirmed;
 				  across_td[1].innerHTML = obj[0].recovered;
 				  across_td[2].innerHTML = obj[0].deaths;
-				  		delta_total.innerHTML = obj[0].deltaconfirmed;
-				  		delta_Deaths.innerHTML = obj[0].deltadeaths;
-				  		delta_recovered.innerHTML = obj[0].deltarecovered;
+				  		
 				text= `<input type="text" class="search_box" id="search "onkeyup="search(this.id, document.getElementById('table_india'))" title="Search Your State" placeholder="Search States/UTs">`;
 				text+=`<table id='table_india'>`;
 				text+=`<caption>All States/UT Stats</caption>`;
