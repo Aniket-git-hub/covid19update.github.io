@@ -41,8 +41,8 @@ const url_world_data = "https://api.covid19api.com/summary";
 					text_data +=`<tr><td>${distric}</td><td>${object[distric].confirmed}</td><td>${object[distric].active}</td><td>${object[distric].deceased}</td><td>${object[distric].recovered}</td></tr>`;
 					}
 					text_data +=`</table>`;
-					(table) && (table.innerHTML = text_data)
-			}).catch(err=>console.log(err))}
+					(table) && (table.innerHTML = text_data);
+			}).catch(err=>console.log(err))};
 // ********************************[data for world]*************************************************
 	window.addEventListener("load",()=>fetch(url_world_data).then(res=>res.json()).then(data=>{
 		let global_stat= data.Global, country_stat = data.Countries, i, text;
@@ -81,7 +81,7 @@ const url_world_data = "https://api.covid19api.com/summary";
     	   	     }
   	   }
    }
-}
+};
  // **************[function for modal boxes]********************************
 const modal_districts = document.getElementById("modal_district");
 const modal=document.getElementById("modal");
@@ -93,4 +93,4 @@ window.addEventListener("click", (event)=>{
 	}else if (event.target == modal_districts) {
 		modal_districts.style.display = 'none';
 	}
-}
+});
