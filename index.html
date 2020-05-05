@@ -25,6 +25,7 @@
   </nav>
   <!-- ------------------this is main section of content----------------->
   <main>
+    <!-- this across box shows the total data of india in summary  -->
     <div class="across-box">
       <h3>Across India</h3>
       <table id="table_across_india">
@@ -34,17 +35,21 @@
           <th>Deceased</th>
         </tr>
         <tr>
-          <td>-</td>
-          <td>-</td>
+          <td style="color:red">-</td>
+          <td style="color:green">-</td>
           <td>-</td>
         </tr>
-
+        <tr>
+          <td style="color:red"><i class="fas fa-angle-up"></i><span id="delta_total"></span></td>
+          <td style="color:green"><i class="fas fa-angle-up"></i><span id="delta_recovered"></span></td>
+          <td><i class="fas fa-angle-up"></i><span id="delta_Deaths"></span></td>
+        </tr>
       </table>
       <p id="timezone" style="font-size: 15px">Last updated 
         <span style="font-size: 15px" id="updated_Time"></span>
       </p>
     </div>
-    <!-- this shows the data summry of world -->
+    <!-- this across box  shows the data summry of world -->
     <div class="across-box">
       <h3><a href="covid-world.html">Across the Globe</a></h3>
       <table id="table_across_global">
@@ -54,11 +59,19 @@
           <th>Deceased</th>
         </tr>
         <tr>
-          <td>-</td>
-          <td>-</td>
+          <td style="color:red">-</td>
+          <td style="color:green">-</td>
           <td>-</td>
         </tr>
+        <tr>
+          <td style="color:red"><i class="fas fa-angle-up"></i><span id="newConfirmed"></span></td>
+          <td style="color:green"><i class="fas fa-angle-up"></i><span id="newRecovered"></span></td>
+          <td><i class="fas fa-angle-up"></i><span id="newDeaths"></span></td>
+        </tr>
       </table>
+      <p id="" style="font-size: 15px">Last updated 
+        <span style="font-size: 15px" id="updated_time_global"></span>
+      </p>
     </div>
     <!-- this shows the states data in detail -->
     <div id="table_indian_states"></div>
