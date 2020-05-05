@@ -102,7 +102,7 @@ grid-column-start: 1;
 grid-column-end:-1;
 padding:20px 20px;
 font-size: 20px;
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-family: Muli;
 letter-spacing: 1px;
 text-align: center;
 }
@@ -234,6 +234,9 @@ main #table-global table,
 main #modal_district table{
 font-size: 15px;
 overflow: auto;
+}
+.fa-angle-up{
+	padding:5px;
 }
 main #table_indian_states table td,
 main #table_indian_states table th,
