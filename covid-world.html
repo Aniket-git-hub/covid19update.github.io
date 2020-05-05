@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Covid19 | Global</title>
-    <link rel="icon" href="for corona upadate title.JPG" type="image/icon type">
+    <link rel="icon" href="#" type="image/icon type">
+    <!-- for corona upadate title.JPG -->
  	<link rel="stylesheet" type="text/css" href="css.css">
 	<link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet'>
 	<script src="javascript.js" type="text/javascript" charset="utf-8" async defer></script>
@@ -16,39 +17,54 @@
     </header>
     <!-- ------------------this is navigation section----------------->
     <nav>
-           
             <button>World</button>
-            <button><a href="index.html">India</a></button>
-
+            <button onclick="location.replace('index.html')">India</a></button>
     </nav>
     <!-- ------------------this is main section of content----------------->
     <main>
-  
     	  <div class="across-box">
-    	  	<h3>Across the Globe</h3>
-    	  	<table>
-    	  		<tr><th>Confirmed</th><th>Recovered</th><th>Deceased</th></tr>
-    	  		<tr><td id="Gconf">-</td><td id="Grec">-</td><td id="Gdea">-</td></tr>
-    	  	</table>
-    	  </div>
+      <h3><a href="covid-world.html">Across the Globe</a></h3>
+      <table id="table_across_global">
+        <tr>
+          <th>Confirmed</th>
+          <th>Recovered</th>
+          <th>Deceased</th>
+        </tr>
+        <tr>
+          <td style="color:red">-</td>
+          <td style="color:green">-</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td style="color:red"><i class="fas fa-angle-up"></i><span id="newConfirmed"></span></td>
+          <td style="color:green"><i class="fas fa-angle-up"></i><span id="newRecovered"></span></td>
+          <td><i class="fas fa-angle-up"></i><span id="newDeaths"></span></td>
+        </tr>
+      </table>
+      <p id="" style="font-size: 15px">Last updated 
+        <span style="font-size: 15px" id="updated_time_global"></span>
+      </p>
+    </div>
           <div id="table-global"></div>
           <!-- [this section is for knowledge] -->
           <div class="across-box" id="modal-envok">
           	<h3>Things to do next</h3>
           	<div>Stay Home</div>
-          	<div><img src="corona.jpg"></div>	
+          	<div><img src="#"></div>
+          	<!-- corona.jpg -->	
           	<div>Maintain Social Distancing</div>
           </div>
           <div class="across-box">
-          	<h3>PM Modi's Latest Speech</h3>
+          	<h3>Prime Minister's Message</h3>
           	<div>
-          		<iframe src="https://www.youtube.com/embed/r56cqFN3GJc/?controls=1"></iframe> 
+          		<iframe src="<!-- https://www.youtube.com/embed/r56cqFN3GJc/?controls=1 -->"></iframe> 
           	</div>
           </div>
           <div class="modal" id="modal">
           	<div class="modal-content">
           		<span class="close" id="close">&times;</span>
-          		<img src="for corona update.JPG " alt="How to maintain socail distancing">
+          		<img src="#" alt="How to maintain socail distancing">
+          		<!-- for corona update.JPG  -->
           	</div>
           </div>
     </main>
