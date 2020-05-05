@@ -7,7 +7,7 @@
     <link rel="icon" href="for corona upadate title.JPG" type="image/icon type">
     <link rel="stylesheet" type="text/css" href="css.css">
     <link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet'>
-
+    <script src="https://kit.fontawesome.com/9566f1b70e.js" crossorigin="anonymous" ></script>
   </head>
   <body onload="document.getElementById('loader').style.display = 'none' ">
     <div class="loader" id="loader">
@@ -28,16 +28,40 @@
     <div class="across-box">
       <h3>Across India</h3>
       <table id="table_across_india">
-        <tr><th>Confirmed</th><th>Recovered</th><th>Deceased</th></tr>
-        <tr><td id="conf">-</td><td id="rec">-</td><td id="dea">-</td></tr>
+        <tr>
+          <th>Confirmed</th>
+          <th>Recovered</th>
+          <th>Deceased</th>
+        </tr>
+        <tr>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td><i class="fas fa-angle-up"></i><span id="delta_total"></span></td>
+          <td><i class="fas fa-angle-up"></i><span id="delta_recovered"></span></td>
+          <td><i class="fas fa-angle-up"></i><span id="delta_Deaths"></span></td>
+        </tr>
       </table>
+      <p id="timezone" style="font-size: 15px">Last updated 
+        <span style="font-size: 15px" id="updated_Time"></span>
+      </p>
     </div>
     <!-- this shows the data summry of world -->
     <div class="across-box">
       <h3><a href="covid-world.html">Across the Globe</a></h3>
       <table id="table_across_global">
-        <tr><th>Confirmed</th><th>Recovered</th><th>Deceased</th></tr>
-        <tr><td id="Gconf"></td><td id="Grec"></td><td id="Gdea"></td></tr>
+        <tr>
+          <th>Confirmed</th>
+          <th>Recovered</th>
+          <th>Deceased</th>
+        </tr>
+        <tr>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
       </table>
     </div>
     <!-- this shows the states data in detail -->
