@@ -4,17 +4,22 @@ const url_world_data = "https://api.covid19api.com/summary";
 	window.addEventListener("load",()=>fetch(url_india).then(res=>res.json()).then(data=>{
 			let obj = data.statewise, i , text;
 			const table = document.getElementById("table_indian_states"),
-			 
-				  across_table = document.getElementById("table_across_india"),
-	     		  across_tr = across_table.getElementsByTagName("tr"),
-		 		  across_td = across_tr[1].getElementsByTagName("td"),
-		 		  delta_Span = across_tr[2].getElementsByTagName("td")[0],
-		 		  updated_Time = document.getElementById("updated_Time");
-		 		  updated_Time.innerHTML = obj[0].lastupdatedtime;
-				  across_td[0].innerHTML = obj[0].confirmed;
-				  across_td[1].innerHTML = obj[0].recovered;
-				  across_td[2].innerHTML = obj[0].deaths;
-				  		
+			 		delta_total = document.getElementById("delta_total"),// span for total delta 
+				   	delta_Deaths = document.getElementById("delta_Deaths"),// span for total delta deaths
+				   	delta_recovered = document.getElementById("delta_recovered"),// sapn for total delta recovered
+				  	across_table = document.getElementById("table_across_india"),//getting across box
+	     		  	across_tr = across_table.getElementsByTagName("tr"),// getting the tr of that table
+		 		  	across_td = across_tr[1].getElementsByTagName("td"),// getting the td of tr
+		 		  	updated_Time = document.getElementById("updated_Time");// getting updated_time p tag to display time
+		 		  	// assining the value of the element
+		 		  	updated_Time.innerHTML = obj[0].lastupdatedtime;
+				  	across_td[0].innerHTML = obj[0].confirmed;
+				  	across_td[1].innerHTML = obj[0].recovered;
+				    across_td[2].innerHTML = obj[0].deaths;
+			  		delta_total.innerHTML = obj[0].deltaconfirmed;
+			  		delta_Deaths.innerHTML = obj[0].deltadeaths;
+			  		delta_recovered.innerHTML = obj[0].deltarecovered;
+			  		// this for the table to show the stats
 				text= `<input type="text" class="search_box" id="search "onkeyup="search(this.id, document.getElementById('table_india'))" title="Search Your State" placeholder="Search States/UTs">`;
 				text+=`<table id='table_india'>`;
 				text+=`<caption>All States/UT Stats</caption>`;
@@ -22,13 +27,43 @@ const url_world_data = "https://api.covid19api.com/summary";
 				for(i = 1; i < obj.length; i++){
 					text+=`<tr onclick='redirect(this)'><td>${obj[i].state}</td><td>${obj[i].confirmed}</td><td>${obj[i].active}</td><td>${obj[i].deaths}</td><td>${obj[i].recovered}</tr>`;
 				}
-				text+=`</table>`;
+				text+=`</table>`;// assined the value to table as data
 				(table) && (table.innerHTML = text);
-			}).catch(error=>console.log(error)));
+			}).catch(error=>console.log(error)));// backup for errors
+	// ********************************[data for world]*************************************************
+	window.addEventListener("load",()=>fetch(url_world_data).then(res=>res.json()).then(data=>{
+		let global_stat= data.Global, country_stat = data.Countries, time = data.Date, i, text;
+		console.log(data);
+		const table = document.getElementById("table-global"),
+			  across_table = document.getElementById("table_across_global"),
+			  across_tr = across_table.getElementsByTagName("tr"),
+			  across_td = across_tr[1].getElementsByTagName("td"),
+			  newConfirmed = document.getElementById("newConfirmed"),
+			  newRecovered = document.getElementById("newRecovered"),
+			  newDeaths = document.getElementById("newDeaths"),
+			  updated_Time = document.getElementById("updated_time_global");
+			  updated_Time.innerHTML = time;
+			  across_td[0].innerHTML = global_stat.TotalConfirmed;
+			  across_td[1].innerHTML = global_stat.TotalRecovered;
+			  across_td[2].innerHTML = global_stat.TotalDeaths;
+			  newConfirmed.innerHTML = global_stat.NewConfirmed;
+			  newRecovered.innerHTML = global_stat.NewRecovered;
+			  newDeaths.innerHTML = global_stat.NewDeaths;
+		text= `<input type="text" class="search_box" id="search" onkeyup="search(this.id, document.getElementById('table_world'))" title="Search Your Country" placeholder="Search Countries">`;
+		text+=`<table id='table_world'>`;
+		text+=`<caption>Countries and their stats</caption>`;
+		text+=`<tr><th>Location</th><th>Confirmed</th><th>Deceased</th><th>Recovered</th></tr>`;
+		for (i = 1; i < country_stat.length; i++) {
+			text+=`<tr><td>${country_stat[i].Country}</td><td>${country_stat[i].TotalConfirmed}</td><td>${country_stat[i].TotalDeaths}</td><td>${country_stat[i].TotalRecovered}</td></tr>`;
+		}
+		text+=`</table>`;
+		(table) && (table.innerHTML = text);
+ 	}).catch(error=>console.log(error))
+ 	);
 //************************ [function to display distric data]**************************************************************************************************************************************************************************
 		  const redirect = (element)=>{
 			const table = document.getElementById("modal_district");
-					table.style.display = 'block';
+				  table.style.display = 'block';
 			const url_for_distric = "https://api.covid19india.org/state_district_wise.json";
 			const state = element.getElementsByTagName("td")[0].innerHTML;
 			fetch(url_for_distric).then(response=> response.json()).then(raw_data=>{
@@ -41,28 +76,8 @@ const url_world_data = "https://api.covid19api.com/summary";
 					text_data +=`<tr><td>${distric}</td><td>${object[distric].confirmed}</td><td>${object[distric].active}</td><td>${object[distric].deceased}</td><td>${object[distric].recovered}</td></tr>`;
 					}
 					text_data +=`</table>`;
-					(table) && (table.innerHTML = text_data);
-			}).catch(err=>console.log(err))};
-// ********************************[data for world]*************************************************
-	window.addEventListener("load",()=>fetch(url_world_data).then(res=>res.json()).then(data=>{
-		let global_stat= data.Global, country_stat = data.Countries, i, text;
- 		const td1 = document.getElementById("Gconf");
-		const td2 = document.getElementById("Grec");
-		const td3 = document.getElementById("Gdea");
-		const table = document.getElementById("table-global");
- 		(td1) && (td1.innerText = global_stat.TotalConfirmed);
- 		(td2) && (td2.innerText = global_stat.TotalRecovered);
- 		(td3) && (td3.innerText = global_stat.TotalDeaths);
-		text= `<input type="text" class="search_box" id="search" onkeyup="search(this.id, document.getElementById('table_world'))" title="Search Your Country" placeholder="Search Countries">`;
-		text+=`<table id='table_world'>`;
-		text+=`<caption>Countries and their stats</caption>`;
-		text+=`<tr><th>Location</th><th>Confirmed</th><th>Deceased</th><th>Recovered</th></tr>`;
-		for (i = 1; i < country_stat.length; i++) {
-			text+=`<tr><td>${country_stat[i].Country}</td><td>${country_stat[i].TotalConfirmed}</td><td>${country_stat[i].TotalDeaths}</td><td>${country_stat[i].TotalRecovered}</td></tr>`;
-		}
-		text+=`</table>`;
-		(table) && (table.innerHTML = text);
- 	}).catch(error=>console.log(error)));
+					(table) && (table.innerHTML = text_data)
+			}).catch(err=>console.log(err))}
 	// ******************************* [search function]********************************
   const search = (id_input, id_table)=>{
   	let input, filter, table, tr, td, i, txtValue;
