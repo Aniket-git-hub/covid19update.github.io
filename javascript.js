@@ -1,6 +1,8 @@
 const url_india = "https://api.covid19india.org/data.json";
 const url_world_data = "https://api.covid19api.com/summary";
-	// // [for indian states ]
+const url_for_distric = "https://api.covid19india.org/state_district_wise.json";
+const url_essentail_resources = "https://api.covid19india.org/resources/resources.json"
+	// // [india  ]
 	window.addEventListener("load",()=>fetch(url_india).then(res=>res.json()).then(data=>{
 			let obj = data.statewise, i , text;
 			const table = document.getElementById("table_indian_states"),
@@ -20,20 +22,33 @@ const url_world_data = "https://api.covid19api.com/summary";
 			  		delta_Deaths.innerHTML = obj[0].deltadeaths;
 			  		delta_recovered.innerHTML = obj[0].deltarecovered;
 			  		// this for the table to show the stats
-				text= `<input type="text" class="search_box" id="search "onkeyup="search(this.id, document.getElementById('table_india'))" title="Search Your State" placeholder="Search States/UTs">`;
+				text= `<input type="text" class="search_box" 
+						id="search "onkeyup="search(this.id, document.getElementById('table_india'))" 
+						title="Search Your State" placeholder="Search States/UTs">`;
 				text+=`<table id='table_india'>`;
 				text+=`<caption>All States/UT Stats</caption>`;
-				text+=`<tr><th>Location</th><th>Total Confirmed</th><th>Active</th><th>Deceased</th><th>Recovered</th></tr>`;
+				text+=`<tr>
+							<th>Location</th>
+							<th>Total Confirmed</th>
+							<th>Active</th>
+							<th>Deceased</th>
+							<th>Recovered</th>
+					   </tr>`;
 				for(i = 1; i < obj.length; i++){
-					text+=`<tr onclick='redirect(this)'><td>${obj[i].state}</td><td>${obj[i].confirmed}</td><td>${obj[i].active}</td><td>${obj[i].deaths}</td><td>${obj[i].recovered}</tr>`;
+					text+=`<tr onclick='redirect(this)'>
+								<td>${obj[i].state}</td>
+								<td>${obj[i].confirmed}</td>
+								<td>${obj[i].active}</td>
+								<td>${obj[i].deaths}</td>
+								<td>${obj[i].recovered}</td>
+					       </tr>`;
 				}
 				text+=`</table>`;// assined the value to table as data
 				(table) && (table.innerHTML = text);
 			}).catch(error=>console.log(error)));// backup for errors
-	// ********************************[data for world]*************************************************
+	// ********************************[world ]*************************************************
 	window.addEventListener("load",()=>fetch(url_world_data).then(res=>res.json()).then(data=>{
 		let global_stat= data.Global, country_stat = data.Countries, time = data.Date, i, text;
-		console.log(data);
 		const table = document.getElementById("table-global"),
 			  across_table = document.getElementById("table_across_global"),
 			  across_tr = across_table.getElementsByTagName("tr"),
@@ -49,31 +64,56 @@ const url_world_data = "https://api.covid19api.com/summary";
 			  newConfirmed.innerHTML = global_stat.NewConfirmed;
 			  newRecovered.innerHTML = global_stat.NewRecovered;
 			  newDeaths.innerHTML = global_stat.NewDeaths;
-		text= `<input type="text" class="search_box" id="search" onkeyup="search(this.id, document.getElementById('table_world'))" title="Search Your Country" placeholder="Search Countries">`;
-		text+=`<table id='table_world'>`;
-		text+=`<caption>Countries and their stats</caption>`;
-		text+=`<tr><th>Location</th><th>Confirmed</th><th>Deceased</th><th>Recovered</th></tr>`;
-		for (i = 1; i < country_stat.length; i++) {
-			text+=`<tr><td>${country_stat[i].Country}</td><td>${country_stat[i].TotalConfirmed}</td><td>${country_stat[i].TotalDeaths}</td><td>${country_stat[i].TotalRecovered}</td></tr>`;
-		}
-		text+=`</table>`;
-		(table) && (table.innerHTML = text);
- 	}).catch(error=>console.log(error))
- 	);
-//************************ [function to display distric data]**************************************************************************************************************************************************************************
+				text= `<input type="text" class="search_box" 
+				id="search" onkeyup="search(this.id, document.getElementById('table_world'))" 
+				title="Search Your Country" placeholder="Search Countries">`;
+				text+=`<table id='table_world'>`;
+				text+=`<caption>Countries and their stats</caption>`;
+				text+= `<tr>
+							<th>Location</th>
+							<th>Confirmed</th>
+							<th>Deceased</th>
+							<th>Recovered</th>
+						</tr>`;
+				for (i = 1; i < country_stat.length; i++) {
+					text+= `<tr>
+								<td>${country_stat[i].Country}</td>
+								<td>${country_stat[i].TotalConfirmed}</td>
+								<td>${country_stat[i].TotalDeaths}</td>
+								<td>${country_stat[i].TotalRecovered}</td>
+							</tr>`;
+				}
+				text+=`</table>`;
+				(table) && (table.innerHTML = text);
+		 	}).catch(error=>console.log(error))
+		 	);
+//************************ [district]**************************************************************************************************************************************************************************
 		  const redirect = (element)=>{
 			const table = document.getElementById("modal_district");
+			const state = element.getElementsByTagName("td")[0].innerHTML;	
 				  table.style.display = 'block';
-			const url_for_distric = "https://api.covid19india.org/state_district_wise.json";
-			const state = element.getElementsByTagName("td")[0].innerHTML;
 			fetch(url_for_distric).then(response=> response.json()).then(raw_data=>{
-					let object = raw_data[state].districtData, text_data;
-						text_data= `<input type="text" class="search_box" id="search" onkeyup="search(this.id, document.getElementById('table_district'))" title="Search Your Districts" placeholder="Search Districts">`; 
+					let object = raw_data[state].districtData, text_data;					
+						text_data= `<input type="text" class="search_box" 
+						id="search" onkeyup="search(this.id, document.getElementById('table_district'))" 
+						title="Search Your Districts" placeholder="Search Districts">`; 
 						text_data+= `<table id='table_district'>`;
 						text_data+=`<caption>District Stats</caption>`;
-						text_data+=`<tr><th>Location</th><th>Total Confirmed</th><th>Active</th><th>Deceased</th><th>Recovered</th></tr>`; 
+						text_data+=`<tr>
+						<th>Location</th>
+						<th>Total Confirmed</th>
+						<th>Active</th>
+						<th>Deceased</th>
+						<th>Recovered</th>
+						</tr>`; 
 					for ( let distric in object){
-					text_data +=`<tr><td>${distric}</td><td>${object[distric].confirmed}</td><td>${object[distric].active}</td><td>${object[distric].deceased}</td><td>${object[distric].recovered}</td></tr>`;
+					text_data +=`<tr>
+					<td>${distric}</td>
+					<td>${object[distric].confirmed}</td>
+					<td>${object[distric].active}</td>
+					<td>${object[distric].deceased}</td>
+					<td>${object[distric].recovered}</td>
+					</tr>`;
 					}
 					text_data +=`</table>`;
 					(table) && (table.innerHTML = text_data)
@@ -109,3 +149,5 @@ window.addEventListener("click", (event)=>{
 		modal_districts.style.display = 'none';
 	}
 });
+
+	
