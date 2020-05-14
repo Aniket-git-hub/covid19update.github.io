@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Covid19 | help</title>
+		<link rel="icon" href="for corona upadate title.JPG" type="image/icon type">
+		<link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet'>
+		<script src="https://kit.fontawesome.com/9566f1b70e.js" crossorigin="anonymous" ></script>
+		<link rel="stylesheet" type="text/css" href="css.css">
+		<style type="text/css" media="screen">
+*{
+			-webkit-box-sizing: border-box;
+			        box-sizing: border-box;
+			font-family: Muli;
+			letter-spacing: 1px;
+			padding: 0;
+			margin: 0;
+			
+		}	
+		.box{
+					grid-column: 1/-1;
+				}
+		 #resources{
+			width: 100%;
+			height: -webkit-fit-content;
+			height: -moz-fit-content;
+			height: fit-content;
+			border: 1px solid black;
+			overflow: auto;
+			padding:0.5rem ;
+		}
+	 #resources table tr{
+			padding:5px;
+		}
+		.container{
+			border-radius: 5px;
+			padding: 5px 5px;
+			text-align: left;
+			-webkit-box-shadow: 0 0 3px 3px lightgray;
+			box-shadow: 0 0 3px 3px lightgray;
+			margin-bottom: 15px;
+			width: -webkit-fit-content;
+			width: -moz-fit-content;
+			width: fit-content;
+			display: inline-block;
+			}
+			.inputbox{
+				width: 100%;
+				grid-column: 1/5;
+				text-align: center;
+			}
+			.inputbox input[type="text"]{
+				display: inline-block;
+				width: 50%;
+				padding: 0.5rem;
+				outline: none;
+				border-radius: 10px;
+				border: 1px solid black;
+			}
+			@media screen and (min-width:768px) {
+				.box{
+					width: 100vh;
+					grid-column: 1/-1;
+				}
+				.container{
+					width: 50%;
+					overflow: auto;
+				}
+				.inputbox{
+				width: 100%;
+				grid-column: 1/5;
+
+			}
+			}
+			@media screen and (min-width:1080px) {
+				.container{
+					width: 50%;
+					overflow: auto;
+				}
+				.inputbox{
+				width: 100%;
+				grid-column: 1/5;
+
+			}
+			}
+		</style>
+	</head>
+	<body onload="">
+		<div class="container inputbox">
+			<label>Search States</label><input type="text"  id="input_state"placeholder=""><button type="button" id="button">Search</button>
+		</div>
+			<div id="resources" class="container box">
+			</div>
+		<script type="text/javascript">
+			const url_essentail_resources = "https://api.covid19india.org/resources/resources.json"
+			
+			const show_resources = ()=>{
+					fetch(url_essentail_resources).then(res=>res.json()).then(rawdata =>{
+						let resources_data = rawdata.resources, table = document.getElementById("resources"), text_data;
+							
+							let state=document.getElementById("input_state").value;
+										text_data+=`<h3 class="container">${state} Help & Resources</h3>`;
+							for (let i = 0; i < resources_data.length; i++){
+								if(resources_data[i].hasOwnProperty("state") && resources_data[i].state === state){
+									text_data+=`<div class="container">`
+									text_data+=`<table>`;
+										text_data+=`<tr>
+															<th>City:</th>
+															<td>${resources_data[i].city}</td>
+													</tr>`;
+										text_data+=`<tr>
+															<th>Category:</th>
+															<td>${resources_data[i].category}</td>
+													</tr>`;
+										text_data+=`<tr>
+															<th>Organisation:</th>
+															<td>${resources_data[i].nameoftheorganisation}</td>
+													</tr>`;
+										text_data+=`<tr>
+															<th>Description:</th>
+															<td>${resources_data[i].descriptionandorserviceprovided}</td>
+												</tr>`;
+										text_data+=`<tr>
+															<th>Phone number:</th>
+															<td>${resources_data[i].phonenumber}</td>
+													</tr>`;
+										text_data+=`<tr>
+															<th>Contact:</th>
+															<td>${resources_data[i].contact}</td>
+													</tr>`;
+									text_data+=`</table>`;
+									text_data+=`</div>`;
+									table.innerHTML = text_data;
+								}
+							}
+						}).catch(err=>console.log(err))
+						}
+						document.getElementById("button").addEventListener("click", show_resources);
+		</script>
+	</body>
+</html>
